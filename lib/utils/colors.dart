@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 
 class MyColors{
-  static Color primaryColor = const Color(0XFF06c46f);
+  static Color primaryColor = const Color(0XFFFFD700);
+  static Color secondaryColor  =  Colors.amber;
   static Color white = Colors.white;
   static Color black = Colors.black;
   static Color grey = Colors.grey;
@@ -15,4 +16,7 @@ class MyColors{
   static Color grey6 = Colors.grey.shade600;
   static Color grey7 = Colors.grey.shade700;
   static Color grey8 = Colors.grey.shade800;
+  static Color grey9 = Colors.grey.shade900;
+  static const textPrimary = Colors.white;
+  static const textSecondary = Colors.white70;
 }
