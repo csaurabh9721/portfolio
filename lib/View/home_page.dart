@@ -15,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<String> bgImages = List.generate(10, (index) => "assets/bg${index + 1}.jpg");
+  final List<String> bgImages = List.generate(8, (index) => "assets/bg${index + 1}.jpg");
   int _index = 0;
   late Timer _timer;
 
