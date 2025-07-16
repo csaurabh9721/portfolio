@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 
 class MyColors{
   static Color primaryColor = const Color(0XFFFFD700);
+  static const Color white70 = Colors.white70;
+  static const Color white54 = Colors.white54;
   static Color secondaryColor  =  Colors.amber;
   static Color white = Colors.white;
   static Color black = Colors.black;
+  static Color black87 = Colors.black87;
   static Color grey = Colors.grey;
   static Color grey1 = Colors.grey.shade100;
   static Color grey2 = Colors.grey.shade200;

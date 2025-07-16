@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:saurabh_chauhan_portfolio/View/client_testimonials.dart';
+import 'package:saurabh_chauhan_portfolio/View/portfolio_projects.dart';
 import 'about_me.dart';
+import 'articles.dart';
 import 'experience.dart';
 import 'footer.dart';
-import 'newf.dart';
+import 'tech_stack.dart';
 import 'skills.dart';
 import 'services_offered.dart';
 
@@ -15,7 +18,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<String> bgImages = List.generate(8, (index) => "assets/bg${index + 1}.jpg");
+  final List<String> bgImages =
+      List.generate(8, (index) => "assets/bg${index + 1}.jpg");
   int _index = 0;
   late Timer _timer;
 
@@ -61,7 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               width: size.width,
               decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.5), // Overlay for better readability
+                color: Colors.black
+                    .withValues(alpha: 0.5), // Overlay for better readability
               ),
               child: const Column(
                 children: [
@@ -69,7 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   SkillSection(),
                   Experience(),
                   ServicesOffered(),
-                  PortfolioExtras(),
+                  SizedBox(height: 60),
+                  TechStack(),
+                  SizedBox(height: 60),
+                  ClientTestimonials(),
+                  SizedBox(height: 60),
+                  Articles(),
+                  SizedBox(height: 60),
+                  PortfolioProjects(),
                   SizedBox(height: 60),
                   Footer(),
                 ],

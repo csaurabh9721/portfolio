@@ -11,32 +11,38 @@ class ServicesOffered extends StatelessWidget {
       {
         'title': 'Mobile App Development',
         'icon': Icons.phone_iphone,
-        'desc': 'Cross-platform app development using Flutter with pixel-perfect UI and smooth performance.'
+        'desc':
+            'Cross-platform app development using Flutter with pixel-perfect UI and smooth performance.'
       },
       {
         'title': 'Native Android Apps',
         'icon': Icons.android,
-        'desc': 'Robust native apps using Kotlin and Android SDK with full lifecycle management.'
+        'desc':
+            'Robust native apps using Kotlin and Android SDK with full lifecycle management.'
       },
       {
         'title': 'Backend Development',
         'icon': Icons.cloud,
-        'desc': 'Secure REST APIs with Spring Boot, integrated with MySQL or Firebase for scalable solutions.'
+        'desc':
+            'Secure REST APIs with Spring Boot, integrated with MySQL or Firebase for scalable solutions.'
       },
       {
         'title': 'App Deployment & CI/CD',
         'icon': Icons.system_security_update,
-        'desc': 'Deployment to Play Store, App Store, and web with CI/CD automation and performance monitoring.'
+        'desc':
+            'Deployment to Play Store, App Store, and web with CI/CD automation and performance monitoring.'
       },
       {
         'title': 'UI/UX Consulting',
         'icon': Icons.design_services,
-        'desc': 'Modern design systems, animations, and accessibility-focused user interfaces built in Flutter.'
+        'desc':
+            'Modern design systems, animations, and accessibility-focused user interfaces built in Flutter.'
       },
       {
         'title': 'Project Leadership',
         'icon': Icons.leaderboard,
-        'desc': 'Lead full-stack mobile projects with team mentoring, version control, and agile delivery.'
+        'desc':
+            'Lead full-stack mobile projects with team mentoring, version control, and agile delivery.'
       },
     ];
 
@@ -58,18 +64,19 @@ class ServicesOffered extends StatelessWidget {
                   text: 'Services',
                   style: GoogleFonts.fjallaOne(
                     textStyle:
-                    TextStyle(color: MyColors.primaryColor, fontSize: 36),
+                        TextStyle(color: MyColors.primaryColor, fontSize: 36),
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 20),
           Wrap(
             runSpacing: 24,
             spacing: 24,
             alignment: WrapAlignment.center,
-            children: services.map((service) => _buildServiceCard(service)).toList(),
+            children:
+                services.map((service) => _buildServiceCard(service)).toList(),
           )
         ],
       ),

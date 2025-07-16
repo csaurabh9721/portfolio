@@ -1,6 +1,7 @@
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:saurabh_chauhan_portfolio/utils/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
@@ -8,13 +9,10 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeColor = const Color(0XFFFFD700);
-    final textSecondary = Colors.white70;
-
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      color: Colors.black87,
+      color: MyColors.black87,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -23,18 +21,32 @@ class Footer extends StatelessWidget {
             runSpacing: 12,
             alignment: WrapAlignment.center,
             children: [
-              _footerItem(Icons.phone, "+91 9455122458"),
-              _footerItem(Icons.phone_android, "+91 9161630825"),
-              InkWell(
-                onTap: () => launchEmail(),
-                child: _footerItem(Icons.email, "csaurabh002@gmail.com"),
+              _footerItem(Icons.phone, "+91 9455122458", true),
+              _footerItem(Icons.phone_android, "+91 9161630825", true),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.email, size: 16, color: MyColors.white54),
+                  const SizedBox(width: 6),
+                  SelectableText(
+                    "csaurabh002@gmail.com",
+                    style:
+                        GoogleFonts.roboto(color: MyColors.white70, fontSize: 13),
+                  ),
+                  const SizedBox(width: 4),
+                  InkWell(
+                      onTap: () => launchEmail(),
+                      child: Icon(Icons.link,
+                          size: 18, color: MyColors.primaryColor)),
+                ],
               ),
               InkWell(
                 onTap: () => _launchURL("https://github.com/csaurabh9721/"),
                 child: _footerItem(Icons.code, "github.com"),
               ),
               InkWell(
-                onTap: () => _launchURL("https://www.linkedin.com/in/saurabh-chauhan-374992217/"),
+                onTap: () => _launchURL(
+                    "https://www.linkedin.com/in/saurabh-chauhan-374992217/"),
                 child: _footerItem(Icons.link, "linkedin.com"),
               ),
               InkWell(
@@ -46,23 +58,29 @@ class Footer extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             "© ${DateTime.now().year} Saurabh Chauhan | Full Stack Developer",
-            style: TextStyle(color: textSecondary, fontSize: 13),
+            style: const TextStyle(color: MyColors.white70, fontSize: 13),
           )
         ],
       ),
     );
   }
 
-  Widget _footerItem(IconData icon, String text) {
+  Widget _footerItem(IconData icon, String text,
+      [bool isSelectableText = false]) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 16, color: Colors.white54),
+        Icon(icon, size: 16, color: MyColors.white54),
         const SizedBox(width: 6),
-        Text(
-          text,
-          style: GoogleFonts.roboto(color: Colors.white70, fontSize: 13),
-        ),
+        isSelectableText
+            ? SelectableText(
+                text,
+                style: GoogleFonts.roboto(color: MyColors.white70, fontSize: 13),
+              )
+            : Text(
+                text,
+                style: GoogleFonts.roboto(color: MyColors.white70, fontSize: 13),
+              ),
       ],
     );
   }
@@ -96,12 +114,12 @@ class Footer extends StatelessWidget {
   String? _encodeQueryParameters(Map<String, String> params) {
     return params.entries
         .map((e) =>
-    '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
         .join('&');
   }
 
   void _downloadResume() {
-    const url = 'assets/Saurabh Chauhan.pdf'; // Relative to web/ folder
+    const url = 'assets/Saurabh Chauhan.pdf';
     html.AnchorElement anchorElement = html.AnchorElement(href: url)
       ..setAttribute("download", "Saurabh_Chauhan_Resume.pdf")
       ..click();

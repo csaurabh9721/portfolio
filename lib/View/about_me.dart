@@ -1,19 +1,12 @@
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:saurabh_chauhan_portfolio/utils/colors.dart';
-import '../data/personal_info.dart';
 
 class AboutMeSection extends StatelessWidget {
   const AboutMeSection({super.key});
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
-    final themeColor = const Color(0XFFFFD700);
-    final secondaryColor = Colors.amber;
-    final textColor = Colors.white;
-    final textSecondary = Colors.white70;
     return  Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
@@ -31,7 +24,7 @@ class AboutMeSection extends StatelessWidget {
             "- I'm Saurabh Chauhan",
             style: GoogleFonts.dancingScript(
               fontSize: size.width * 0.035,
-              color: themeColor,
+              color: MyColors.primaryColor,
             ),
           ),
           const SizedBox(height: 10),
@@ -39,7 +32,7 @@ class AboutMeSection extends StatelessWidget {
             "Full Stack Developer",
             style: GoogleFonts.libreBaskerville(
               fontSize: size.width * 0.025,
-              color: textColor,
+              color: MyColors.textPrimary,
             ),
           ),
           const SizedBox(height: 20),
@@ -49,7 +42,7 @@ class AboutMeSection extends StatelessWidget {
               "I’m a mobile app developer with 4+ years of experience helping businesses launch high-quality apps across platforms. I build cross-platform mobile apps using Flutter, native Android apps with Kotlin, and robust backends with Spring Boot. From idea to launch, I handle the full process — delivering fast, scalable, and beautiful apps that solve real-world problems.",
               style: GoogleFonts.lato(
                 fontSize: 15,
-                color: textSecondary,
+                color: MyColors.textSecondary,
                 height: 1.5,
               ),
               textAlign: TextAlign.center,
@@ -57,14 +50,13 @@ class AboutMeSection extends StatelessWidget {
           ),
           const SizedBox(height: 40),
           Wrap(
-            spacing: 24,
+            spacing: 30,
             runSpacing: 16,
             alignment: WrapAlignment.center,
             children: [
-              _infoTile("Experience", "4+ Years", themeColor),
-              _infoTile("Projects", "10+ Completed", themeColor),
-              _infoTile("Freelance", "Available", themeColor),
-              _infoTile("Location", "Ghaziabad, India", themeColor),
+              _infoTile("Experience", "4+ Years", MyColors.primaryColor),
+              _infoTile("Projects", "10+ Completed", MyColors.primaryColor),
+              _infoTile("Location", "Noida, India", MyColors.primaryColor),
             ],
           )
         ],
@@ -77,7 +69,7 @@ class AboutMeSection extends StatelessWidget {
         Text(
           value,
           style: GoogleFonts.poppins(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
             color: themeColor,
           ),
@@ -87,7 +79,7 @@ class AboutMeSection extends StatelessWidget {
           title,
           style: GoogleFonts.poppins(
             fontSize: 14,
-            color: Colors.white70,
+            color: MyColors.white70,
           ),
         )
       ],
