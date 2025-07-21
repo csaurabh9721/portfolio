@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:saurabh_chauhan_portfolio/View/client_testimonials.dart';
 import 'package:saurabh_chauhan_portfolio/View/portfolio_projects.dart';
 import 'about_me.dart';
@@ -20,53 +21,51 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<String> bgImages =
       List.generate(8, (index) => "assets/bg${index + 1}.jpg");
-  int _index = 0;
-  late Timer _timer;
+  final RxInt _index = 0.obs;
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 8), (timer) {
-      setState(() {
-        _index = (_index + 1) % bgImages.length;
-      });
-    });
+    _changeImage();
   }
 
-  @override
-  void dispose() {
-    _timer.cancel(); // Clean up timer
-    super.dispose();
+
+  Future<void> _changeImage()async {
+    await Future.delayed(const Duration(seconds: 8));
+    if (_index.value < bgImages.length - 1) {
+      _index.value++;
+    } else {
+      _index.value = 0;
+    }
+    _changeImage();
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          AnimatedSwitcher(
-            duration: const Duration(seconds: 2),
-            child: SizedBox(
-              key: ValueKey<String>(bgImages[_index]),
-              height: size.height,
-              width: size.width,
-              child: Image.asset(
-                bgImages[_index],
-                fit: BoxFit.cover,
+          Obx(
+            () => AnimatedSwitcher(
+              duration: const Duration(seconds: 3),
+              child: SizedBox(
+                key: ValueKey<String>(bgImages[_index.value]),
+                height: size.height,
+                width: size.width,
+                child: Image.asset(
+                  bgImages[_index.value],
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-
-          // Overlay content
           SingleChildScrollView(
             child: Container(
               width: size.width,
               decoration: BoxDecoration(
-                color: Colors.black
-                    .withValues(alpha: 0.5), // Overlay for better readability
+                color: Colors.black.withValues(alpha: 0.5), // Overlay for better readability
               ),
               child: const Column(
                 children: [
