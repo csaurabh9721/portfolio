@@ -29,8 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _changeImage();
   }
 
-
-  Future<void> _changeImage()async {
+  Future<void> _changeImage() async {
     await Future.delayed(const Duration(seconds: 8));
     if (_index.value < bgImages.length - 1) {
       _index.value++;
@@ -65,24 +64,25 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               width: size.width,
               decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.5), // Overlay for better readability
+                color: Colors.black
+                    .withValues(alpha: 0.5), // Overlay for better readability
               ),
-              child: const Column(
+              child: Column(
                 children: [
                   AboutMeSection(),
-                  SkillSection(),
-                  Experience(),
-                  ServicesOffered(),
-                  SizedBox(height: 60),
+                  const SkillSection(),
+                  const Experience(),
+                  const ServicesOffered(),
+                  const SizedBox(height: 60),
                   TechStack(),
-                  SizedBox(height: 60),
-                  ClientTestimonials(),
-                  SizedBox(height: 60),
-                  Articles(),
-                  SizedBox(height: 60),
-                  PortfolioProjects(),
-                  SizedBox(height: 60),
-                  Footer(),
+                  const SizedBox(height: 60),
+                  const ClientTestimonials(),
+                  const SizedBox(height: 60),
+                  const Articles(),
+                  const SizedBox(height: 60),
+                  const PortfolioProjects(),
+                  const SizedBox(height: 60),
+                  const Footer(),
                 ],
               ),
             ),

@@ -38,7 +38,11 @@ class SkillSection extends StatelessWidget {
             "Kotlin (Native Android)",
             "Java",
             "Spring Boot (Backend)",
-            "RESTful APIs"
+            "RESTful APIs",
+            "Microservice",
+            "Kafka",
+            "RabbitMQ",
+            "Redis",
           ]),
           const SizedBox(height: 30),
           _buildSkillCategory("🧱 Architecture & State Management", [
@@ -49,6 +53,8 @@ class SkillSection extends StatelessWidget {
           const SizedBox(height: 30),
           _buildSkillCategory("🔐 Database & Backend", [
             "MySQL",
+            "PostgreSQL",
+            "Oracle",
             "Firebase (Auth, Firestore, FCM)",
             "Cloud Functions"
           ]),
@@ -98,7 +104,7 @@ class SkillSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(30),
         border: Border.all(color: Colors.white.withOpacity(0.1)),
         boxShadow: [

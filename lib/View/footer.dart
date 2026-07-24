@@ -21,8 +21,8 @@ class Footer extends StatelessWidget {
             runSpacing: 12,
             alignment: WrapAlignment.center,
             children: [
-              _footerItem(Icons.phone, "+91 9455122458", true),
               _footerItem(Icons.phone_android, "+91 9161630825", true),
+              _footerItem(Icons.phone, "+91 9455122458", true),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -119,9 +119,10 @@ class Footer extends StatelessWidget {
   }
 
   void _downloadResume() {
-    const url = 'assets/Saurabh Chauhan.pdf';
+    //const url = 'assets/Saurabh Chauhan.pdf';
+    const url = 'assets/Saurabh_Chauhan_Resume.docx';
     html.AnchorElement anchorElement = html.AnchorElement(href: url)
-      ..setAttribute("download", "Saurabh_Chauhan_Resume.pdf")
+      ..setAttribute("download", "Saurabh_Chauhan_Resume.docx")
       ..click();
   }
 }

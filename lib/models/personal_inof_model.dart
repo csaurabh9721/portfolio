@@ -4,7 +4,7 @@ class PersonalInfoModel {
   final String stack;
   final String aboutMe;
   final String gender;
-  final String birthDate; // Format: YYYY-MM-DD
+  final String birthDate;
   final List<String> languages;
   final String nationality;
   final String address;
@@ -44,6 +44,30 @@ class PersonalInfoModel {
   }
 
   String get languageList => languages.join(', ');
-  String get getProjectCount =>totalProjects.toString()+"+";
-  String get getExperienceYears =>experienceYears.toString()+"+";
+
+  String get getProjectCount => "$totalProjects+ Completed";
+
+  String get getExperienceYears => "$experienceYears+ Years";
+
+  factory PersonalInfoModel.fromJson(Map<String, dynamic> json) {
+    return PersonalInfoModel(
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      stack: json['stack'],
+      aboutMe: json['aboutMe'],
+      gender: json['gender'],
+      birthDate: json['birthDate'],
+      languages: List<String>.from(json['languages']),
+      nationality: json['nationality'],
+      address: json['address'],
+      mobile1: json['mobile1'],
+      mobile2: json['mobile2'],
+      email: json['email'],
+      linkedIn: json['linkedIn'],
+      github: json['github'],
+      freelanceStatus: json['freelanceStatus'],
+      experienceYears: json['experienceYears'],
+      totalProjects: json['totalProjects'],
+    );
+  }
 }

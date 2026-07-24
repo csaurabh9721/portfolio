@@ -2,67 +2,84 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:saurabh_chauhan_portfolio/utils/colors.dart';
 
+import '../data/personal_info.dart';
+import 'package:get/get.dart';
+
+import '../models/personal_inof_model.dart';
+
 class AboutMeSection extends StatelessWidget {
-  const AboutMeSection({super.key});
+  AboutMeSection({super.key});
+
+  final PersonalInfoController _controller = Get.put(PersonalInfoController());
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return  Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.black, Color(0xFF1A1A1A)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "- I'm Saurabh Chauhan",
-            style: GoogleFonts.dancingScript(
-              fontSize: size.width * 0.035,
-              color: MyColors.primaryColor,
+    return Obx(
+      () {
+        PersonalInfoModel personalInfo = _controller.personalInfo.value;
+        return Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.black, Color(0xFF1A1A1A)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
-          const SizedBox(height: 10),
-          Text(
-            "Full Stack Developer",
-            style: GoogleFonts.libreBaskerville(
-              fontSize: size.width * 0.025,
-              color: MyColors.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 20),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 700),
-            child: Text(
-              "I’m a mobile app developer with 4+ years of experience helping businesses launch high-quality apps across platforms. I build cross-platform mobile apps using Flutter, native Android apps with Kotlin, and robust backends with Spring Boot. From idea to launch, I handle the full process — delivering fast, scalable, and beautiful apps that solve real-world problems.",
-              style: GoogleFonts.lato(
-                fontSize: 15,
-                color: MyColors.textSecondary,
-                height: 1.5,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const SizedBox(height: 40),
-          Wrap(
-            spacing: 30,
-            runSpacing: 16,
-            alignment: WrapAlignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _infoTile("Experience", "4+ Years", MyColors.primaryColor),
-              _infoTile("Projects", "10+ Completed", MyColors.primaryColor),
-              _infoTile("Location", "Noida, India", MyColors.primaryColor),
+              Text(
+                "- I'm ${personalInfo.firstName} ${personalInfo.lastName}",
+                style: GoogleFonts.dancingScript(
+                  fontSize: size.width * 0.035,
+                  color: MyColors.primaryColor,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                personalInfo.stack,
+                style: GoogleFonts.libreBaskerville(
+                  fontSize: size.width * 0.025,
+                  color: MyColors.textPrimary,
+                ),
+              ),
+              const SizedBox(height: 20),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 700),
+                child: Text(
+                  personalInfo.aboutMe,
+                  style: GoogleFonts.lato(
+                    fontSize: 15,
+                    color: MyColors.textSecondary,
+                    height: 1.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 40),
+              Wrap(
+                spacing: 30,
+                runSpacing: 16,
+                alignment: WrapAlignment.center,
+                children: [
+                  _infoTile("Experience", personalInfo.getExperienceYears,
+                      MyColors.primaryColor),
+                  _infoTile("Projects", personalInfo.getProjectCount,
+                      MyColors.primaryColor),
+                  _infoTile(
+                      "Location", personalInfo.address, MyColors.primaryColor),
+                ],
+              )
             ],
-          )
-        ],
-      ),
+          ),
+        );
+      },
     );
   }
+
   Widget _infoTile(String title, String value, Color themeColor) {
     return Column(
       children: [
